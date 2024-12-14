@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+body {
+    background-color: #000;
+    font-family: Open Sans, Arial;
+    color: white;
+    font-size: 16px;
+    margin: 2em auto;
+    max-width: 800px;
+    padding: 1em;
+    line-height: 1.4;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    margin: auto;
+}
+
+.mfw {
+    color: #ff0d0d;
+}
+
+.wr {
+    color: #db695d;
+}
+
+.colored {
+    animation: changeColor 1s infinite;
+}
+
+@keyframes changeColor {
+    0% {
+        color: rgb(255, 0, 0);
+    }
+
+    25% {
+        color: rgb(0, 255, 0);
+    }
+
+    50% {
+        color: rgb(0, 0, 255);
+    }
+
+    75% {
+        color: rgb(255, 255, 0);
+    }
+
+    100% {
+        color: rgb(255, 0, 255);
+    }
+}
+
+.sb {
+    color: #00e;
+}
+
+.vc {
+    color: #551a8b;
+}
+
+.fakepre {
+    font-family: monospace;
+    font-size: .9em;
+}
+
+.color444 {
+    color: #444;
+    font-weight: 700;
+}
+
+.color444::before {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-left: .2em;
+    margin-right: .2em;
+    background-color: #444;
+}
+
+.color454545 {
+    color: #454545;
+    font-weight: 700;
+}
+
+.color454545::before {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-left: .2em;
+    margin-right: .2em;
+    background-color: #454545;
+}
+
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+div.fancyPositioning div.picture-left {
+    float: left;
+    width: 40%;
+    overflow: hidden;
+    margin-right: 1em;
+}
+
+figure {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 40px;
+    margin-inline-end: 40px;
+    unicode-bidi: isolate;
+    margin: auto;
+    padding-left: 4%;
+    padding-top: 9%;
+}
+
+div.fancyPositioning div.picture-left img {
+    width: 100%;
+}
+
+div.fancyPositioning div.picture-left figure figcaption {
+    font-size: .7em;
+}
+
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+
+}
+
+div.fancyPositioning div.tleft {
+    float: left;
+    width: 55%;
+    position: relative;
+}
+
+div.fancyPositioning::after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+blockquote::before {
+    font-family: "Open Sans", Arial;
+    color: #666;
+    content: open-quote;
+    font-size: 2.2em;
+    font-weight: 600;
+    float: left;
+    margin-top: 0;
+    margin-right: .2rem;
+    width: 1.2rem;
+}
+
+blockquote span {
+    float: left;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+blockquote author {
+    display: block;
+    clear: both;
+    font-size: .6em;
+    margin-left: 2.4rem;
+    font-style: oblique;
+}
+
+blockquote author::before {
+    content: "- ";
+    margin-right: 1em;
+}
+
+blockquote::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+a.kopimi,
+a.kopimi img.kopimi {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a.kopimi img.kopimi {
+    height: 2em;
+}
+
+.visited {
+    color: #941352;
+}
+
+.visited-maroon {
+    color: #85144b;
+}
+
+p.gogo {
+    margin-top: -1em;
+}
+
+small {
+    font-size: .4em;
+}
+
+a {
+    color: #44c7ff;
+}
+
+#contrast,
+#inverted {
+    position: fixed;
+}
+
+#contrast {
+    color: #fff;
+    background-color: #000;
+}
+
+.button-constrast {
+    text-decoration: underline;
+    position: absolute;
+    cursor: pointer;
+    right: 10px;
+    top: 10px;
+    outline: none;
+    border: none;
+}
+
+#inverted {
+    color: #fff;
+    background-color: #000;
+}
+
+.button-inverted {
+    text-decoration: underline;
+    position: absolute;
+    cursor: pointer;
+    right: 10px;
+    top: 34px;
+    outline: none;
+    border: none;
+}

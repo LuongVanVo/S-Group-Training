@@ -1,0 +1,84 @@
+Buoi2_07/12/2024
+
+- tao nhanh moi : git checkout -b <Ten nhanh>
+- Day nhanh moi len: git push -u origin <Ten nhanh>
+
+- xu ly conflict giữa các nhánh
+* fix conflict (buoi1 va buoi2 dang conflict)
+- git checkout buoi2
+- git rebase main
+
+- git push -u origin buoi2 -f (ep code sau khi conflict len)
+
+-- lấy tất cả thông tin của dự án(nhánh ,....,, nhưng ko lấy code):
+git fetch
+
+
+- Nhúng CSS: inline, internal, external
++ inline: nhúng trực tiếp trong thẻ html
+	- color
+	- font size
+	- font weigh: độ đậm nhạt của chữ
++ internal: tạo thẻ style nằm bên trong thẻ head
+
+đặt tên cho từng thẻ
+class: dùng dấu .
+id: dùng dấu #
+- Nếu các thuộc tính cùng cấp độ, thì cái nào viết sau thì ưu tiên cái đó
+
+- external: tạo file css bên ngoài
+
+=> ưu tiên css inline trước nếu có => ưu tiên cái nào viết sau, để tránh thì thêm vào !important để ưu tiên nó trước
+
+CSS Selector**
+.class
+.class1.class2: chọn tất cả các thẻ vừa có class1 và vừa có class 2
+.class1 .class2: chọn class nào mà class2 nằm trong class 1 => chọn class2 nằm bên trong class1
+* : lấy tất cả các thẻ
+element: lấy tên của các thẻ (VD: h2 => lấy tên của các thẻ có tên h2)
+element.class
+, : css cho nhiều thẻ 1 lúc
+element element1 : chọn tất cả thẻ element1 có trong element
+
+
+* Thứ tự ưu tiên: chọn càng cụ thể thì càng dễ lấy được thứ tự ưu tiên (cái nào chi tiết hơn thì cái đó ưu tiên hơn)
+- mức độ ưu tiên: 
+	+ inline : 1000 point
+	+ #id: 100 
+	+ .class: 10
+	+ tag (thẻ): 1
+=> này tính tổng điểm ra để xét độ ưu tiên
+=> để muốn cái nào ưu tiên trước thì thêm !important
+
+
+* <span></span>: thẻ để viết 1 vài kí tự vào trong 
+span {
+	display: định dạng hiển thị của span
+	width: chiều rộng (ngang) của span
+	height: chiều cao của span
+// lưu ý: chỉ block mới set được các giá trị, còn inline thì không
+}
+
+** Box model
+- chọn computed trong inspect (F12)
+- là khối có các thuộc tính: padding, border, margin, content
+- padding: phần chiếm thêm của đối tượng hiện tại
++ padding-top/bottom/left/right: điều chỉnh vị trí cụ thể
++ ăn theo chiều kim đồng hồ  1 
+			  4    2
+			     3
+=> padding: px px px px theo thứ tự (đủ thông số)
++ thiếu thông số: 
++ khoảng cách giữa 2 box model: bên trên dưới thì lấy max, trái phải thì cộng dồn vào
+
+- border là phần viền
+- margin: phần để cách nhau giữa đối tượng này với các đối tượng khác
++ margin-top/bottom: cách bên trên và dưới, trái phải thì tương tự
+
+* Đơn vị đo
+%
+pixel (px)
+1 rem = 16 px
+1 em = 16 px
+=> em: lấy giá trị font size của cha là mốc
+=> rem: lấy giá trị của font size trong thẻ html là chuẩn (rem = root + em)

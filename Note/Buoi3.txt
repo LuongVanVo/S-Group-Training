@@ -1,0 +1,5 @@
+display flex: ép các thẻ concon lên cùng 1 hàng và ép chiều dài đúng bầng nội dung của nó 
+- flex direction: doi chieu cua truc ngang
+- cross asis: truc doc 
+
+display inline: nằm trên cùng 1 hàng và chiếm đúng nọi dung trong inline

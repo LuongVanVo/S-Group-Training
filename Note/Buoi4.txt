@@ -1,0 +1,20 @@
+Flex shrink 
+Flex grow
+Grid; CHia nội dung thành 1 dạng lưới (Grid layout) để phân trang web ra thành 1 lưới để fill thông tin vào
+
+-Position: 
++ Relative: Vị trí tương đối
++ Static: 
++ absolute: Nổi lên so với các đối tượng khác (đè lên), đè lên cha nó
++ fixed: cố định vị trí, đứng nguyên tại 1 vị trí dù có cuộn chuột
++ sticky: cuộn đến khi đối tượng lên trên đầu trang thì fixed lại lên đầu trang
+LƯU Ý: phải thêm 1 trong 4 top right, bottom, right thì mới có tác dụng 
+
+- pseudo (mã giả):before, after, hover, active, vistied, nth-child
++ before: nằm trước thẻ
++ after: gắn sau thẻ
++ hover: đưa chuột vào thẻ để thay đổi hiệu ứng của box (box shadow) (transition: độ trễ)
+* transition: delay, duration, property
++ active: link 
++ visited: check xem link đã được truy cập chưa => ròi thì đổi màu hay gì đó
++ nth-child: chỉ định thẻ con để customer 
