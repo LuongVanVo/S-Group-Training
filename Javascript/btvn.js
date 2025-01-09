@@ -1,7 +1,7 @@
 // BT3: Kiểm tra xem một số nguyên đã cho có chuỗi chữ số tăng không
 function BT3(a)
 {
-    let str = String(a)
+    let str = a.toString();
     for (let i = 0; i < str.length; i++) {
         for (let j = i + 1; j < str.length; j++) {
             if (str[j] < str[i]) {
