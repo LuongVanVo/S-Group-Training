@@ -1,0 +1,923 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+.header {
+    height: 80px;
+    background-color: #111;
+    border-bottom: 2px solid rgba(51, 51, 51, .25);
+    font-family: 'FF Mark W05', Arial, sans-serif;
+    font-size: 14px !important;
+    font-weight: bold;
+    height: 80px;
+    line-height: normal;
+    position: relative;
+    text-align: left;
+    display: flex;
+    width: 100%;
+    z-index: 3000000;
+}
+
+.position-fixed {
+    position: fixed;
+}
+
+.riot-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 36px;
+}
+
+.logo {
+    fill: aliceblue;
+    width: 85px;
+    height: 28px;
+}
+
+.display-inline-block {
+    display: inline-block;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.align-content-center {
+    align-content: center;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.dau-mui-ten-xuong {
+    margin-left: 0px;
+    margin-bottom: 5px;
+    fill: #7e7e7e;
+    width: 8px;
+    height: 5px;
+    pointer-events: none;
+    margin-left: 5px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.logo-riot-games:hover .logo,
+.logo-riot-games:hover .dau-mui-ten-xuong {
+    fill: red;
+}
+
+
+.logo-LMHT {
+    height: 80px;
+    margin-left: 22px;
+    margin-right: 18px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tieu-de-cac-chu {
+    opacity: 1;
+    margin-left: 18px;
+    transition: opacity ease .3s;
+    width: 100%;
+    height: 80px;
+}
+
+.tieu-de-cac-chu p {
+    box-sizing: border-box;
+}
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.phan-tieu-de {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.text-tieu-de {
+    display: inline-flex;
+    position: relative;
+    height: 80px;
+    cursor: pointer;
+    padding: 0px 4px;
+}
+
+.text-tieu-de:hover p {
+    background: rgba(128, 128, 128, .3);
+    border-radius: 6.4px;
+}
+
+.text-tieu-de:hover .gach-duoi-mau-xanh {
+    opacity: 1;
+}
+
+.text-tieu-de:hover .text-yellow {
+    color: rgb(200, 170, 110);
+}
+
+.text-tieu-de a {
+    display: flex;
+    margin: auto;
+    padding: 0;
+    flex-direction: column;
+    justify-content: center;
+    height: 66px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 120%;
+    overflow: hidden;
+    
+}
+
+.text-color-white {
+    color: #f9f9f9;
+}
+
+.text-tieu-de a .dau-mui-ten-cheo svg {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+}
+
+.vertical-algin-middle {
+    vertical-align: middle;
+}
+
+.gach-duoi-mau-xanh {
+    background-color: rgb(0, 160, 186);
+    position: absolute;
+    bottom: 7px;
+    height: 4px;
+    width: 100%;
+    border-radius: 2px;
+    left: 0;
+    opacity: 0;
+}
+
+.p-text {
+    padding: 7.5px 16px;
+}
+
+.text-tieu-de .list-submenu-news {
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 69px;
+    background-color: #292929;
+    box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 2px 2px;
+    text-align: left;
+    font-size: 13px;
+    min-width: 200px;
+    opacity: 0;
+    transition: opacity .5s cubic-bezier(0.06, 0.81, 0, 0.98) 0s, visibility 0s;
+    display: none;
+}
+
+.text-tieu-de ul {
+    margin: 0;
+    padding: 0;
+}
+
+.text-tieu-de:hover .list-submenu-news {
+    opacity: 1;
+    transition: opacity .5s cubic-bezier(0.06, 0.81, 0, 0.98) 0s, visibility 0s;
+    visibility: visible;
+    display: block;
+}
+
+.list-style-none {
+    list-style: none;
+}
+
+.submenu-text {
+    padding: 0;
+    line-height: normal;
+}
+
+.list-submenu-news .text-in-submenu-news {
+    display: inline-block;
+    padding: 7px 16px;
+    border: none;
+    height: 100%;
+    width: 100%;
+    margin: 3px 0;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16px;
+    text-transform: capitalize;
+}
+
+.list-submenu-news .text-in-submenu-news-2 {
+    width: 100%;
+    height: 100%;
+    padding: 8px 16px;
+
+    /* margin: 5px 30px; */
+    list-style-type: none;
+    font-weight: 500;
+}
+
+.text-hover {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.text-hover:hover {
+    background: rgba(128, 128, 128, .3);
+    border-radius: 6.4px;
+}
+.margin-top-16 {
+    margin-top: 16px !important;
+}
+
+.margin-bottom-16 {
+    margin-bottom: 16px;
+}
+
+.right-header {
+    display: flex;
+    padding-right: 32px;
+}
+
+.div-PLAYNOW {
+    border-radius: 12px;
+}
+
+.button-PLAYNOW {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 6px;
+}
+
+.color-text-PLAYNOW {
+    background: rgb(11, 196, 226);
+}
+
+.div-PLAYNOW:hover .color-text-PLAYNOW {
+    background: rgb(0, 178, 207);
+}
+
+.text-button-PLAYNOW {
+    cursor: pointer;
+    display: inline-block;
+    transition: color 1s cubic-bezier(0.06, 0.81, 0, 0.98);
+    vertical-align: middle;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: rgba(128, 128, 128, 0.2);
+    padding: 8px 16px;
+    border-radius: 5.4px;
+    letter-spacing: 0.08em;
+    line-height: 120%;
+    height: 32px;
+}
+
+
+.text-button-PLAYNOW.PLAYNOW {
+    text-align: center;
+    line-height: 16px;
+    position: relative;
+    z-index: 0;
+    text-overflow: ellipsis;
+    height: 32px;
+    border-radius: 12px;
+    padding: 8px 16px;
+    color: #111;
+}
+
+.PLAYNOW:hover {
+    color: rgb(200, 170, 110);
+}
+
+.button-world {
+    position: relative;
+    font-family: "FF Mark W05", Arial, sans-serif;
+    height: 100%;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.div-world {
+    display: block;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.WORLD {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    padding: 0;
+    border-radius: 6.4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.WORLD:hover {
+    background: rgba(128, 128, 128, 0.2);
+}
+
+.div-search {
+    position: relative;
+    font-family: "FF Mark W05", Arial, sans-serif;
+    height: 100%;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.search-input-container {
+    display: flex;
+    background-color: #2b2a29;
+    transition: background-color 0.1s ease-in-out;
+    border-radius: 1.6rem;
+    padding: 10px 0;
+}
+
+.search-input-container input {
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0;
+    margin: -8px 10px;
+    border-style: hidden;
+    outline: none;
+    width: 25px;
+    height: 40px;
+    transition: width ease 1s;
+    text-indent: 40px;
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    color: #f9f9f9;
+}
+
+.search-icon {
+    cursor: pointer;
+    position: absolute;
+    transform: translate(50%, 7%);
+    left: 0;
+    transition: translate 1s ease-out;
+}
+
+.search-input-container .search-box {
+    position: absolute;
+    right: 0px;
+    transition: opacity 0.75 linear;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(0, -29%);
+    display: block;
+    cursor: pointer;
+}
+
+.search-input-container .search-box svg {
+    width: 60px;
+}
+.khoi-chua-video-LMHT {
+    min-height: 640px;
+    margin: 0px auto;
+    padding: 64px 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.video-LMHT {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0px;
+    overflow: hidden;
+}
+
+.video {
+    opacity: 0.8;
+    background-color: rgb(10, 20, 40);
+}
+
+section {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+.abc {
+    position: relative;
+    max-width: 1920px;
+    width: 100%;
+    margin: 0px auto;
+}
+
+.top-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    position: absolute;
+    height: 100%;
+}
+
+.logo-chu-LMHT {
+    object-fit: contain;
+    height: auto;
+    max-width: 368px;
+    cursor: pointer;
+}
+
+.phan-chua-chu-o-giua-video {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    flex-grow: 1;
+    gap: 32px;
+}
+
+.canh-chinh {
+    --max-blade-content: 1920px;
+    --blade-content-increment: 320px;
+    margin: 0px auto;
+    padding-left: 48px;
+    padding-right: 48px;
+    width: 100%;
+}
+
+.nut-play-1 {
+    margin-top: 48px;
+    font-family: Spiegel, sans-serif;
+    font-weight: 400;
+    word-break: break-word;
+    font-size: 18px;
+    line-height: 26px;
+    text-transform: uppercase;
+}
+
+.vien-xung-quanh-nut {
+    outline: #fff solid 1px;
+    outline-offset: 3px;
+}
+
+.nut-bam-play {
+    display: block;
+    width: fit-content;
+    padding: 19px 32px;
+    color: #0A1428;
+    background-color: #C8AA6E;
+}
+
+.phan-chua-tin-tuc {
+    position: relative;
+    max-width: 1920px;
+    width: 100%;
+    margin: 0px auto;
+    background-color: #fff;
+    color: rgb(10, 20, 40);
+}
+
+.padding-top-left-48px {
+    padding: 48px 0 48px;
+}
+.khoi-chua-thong-tin {
+    --max-blade-content: 1920px;
+    --blade-content-increment: 320px;
+    margin: 0px auto;
+    padding-left: 48px;
+    padding-right: 48px;
+    width: 100%;
+}
+
+.thanh-tieu-de {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    justify-content: space-between;
+}
+
+.khoi-chua-thong-tin .thanh-tieu-de h2 {
+    text-wrap: balance;
+    word-break: break-word;
+    font-family: "Beaufort for LOL", sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.chu-viewALL {
+    font-family: Spiegel, sans-serif;
+    font-weight: 400;
+    word-break: break-word;
+    font-size: 18px;
+    line-height: 26px;
+    align-self: center;
+}
+
+.canh-chinh-viewALL {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    color: rgb(10, 20, 40);
+    background-color: transparent;
+}
+
+.thao-tac-chu-viewALL {
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: color 0.25s ease-in-out, background-color 0.3s ease-in-out;
+    font-family: Spiegel, sans-serif;
+    word-break: break-word;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 500;
+    position: relative;
+}
+
+.khoi-viewALL-kiTu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    text-align: center;
+}
+
+.canh-chinh-viewALL .ki-hieu-ben-canh-viewALL {
+    transition: color 0.25s ease-in-out, background-color 0.3s ease-in-out;
+    --kich-thuoc-icon: 20px;
+    width: var(--kich-thuoc-icon);
+    height: var(--kich-thuoc-icon);
+    mask-size: calc(var(--kich-thuoc-icon)* 0.6);
+    mask-position: center center;
+    background-color: rgb(200, 170, 110);
+}
+
+.link-icon {
+    display: inline-block;
+    mask-image: url('./link.svg');
+    mask-repeat: no-repeat;
+    mask-size: contain ;
+    transform: none; 
+    width: 0.7em;
+    height: 0.7em;
+    background-color: rgb(200, 170, 110);
+}
+
+.icon-ben-phai {
+    flex-direction: row-reverse;
+}
+
+.noi-dung-cach-le-trai-phai {
+    max-width: 1920px;
+    min-width: 320px;
+    margin: 0px auto;
+}
+
+.canh-chinh-khoi-tin-tuc {
+    margin: 32px 0;
+    overflow: hidden;
+    cursor: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.vi-tri-cac-khoi-tintuc {
+    position: relative;
+    display: flex;
+    gap: 32px; 
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    margin: 0;
+    padding: 0;
+}
+
+.vi-tri-cac-khoi-tintuc .card {
+    flex: 1 1 calc(33.33% - 32px); 
+    max-width: calc(33.33% - 32px); 
+    box-sizing: border-box;
+}
+
+.vi-tri-cac-khoi-tintuc .card:last-child {
+    margin-right: 0;
+}
+
+img, video {
+    border: none;
+    max-width: 100%;
+    height: auto;
+}
+
+.container-tin-tuc {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.margin-topbot-32 {
+    margin: 32px 0;
+}
+
+.content-1 {
+    font-family: Spiegel, sans-serif;
+    font-weight: 400;
+    word-break: break-word;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.card {
+    display: inline-block;
+    width: 480px; /* Chiều rộng bằng với ảnh */
+    overflow: hidden;
+    background-color: #fff;
+    text-align: left;
+    max-width: calc(33.33% - 32px);
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 32px;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.image-card-1 img, .image-card-2 img, .image-card-3 img {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+    object-fit: cover;
+} 
+
+.category {
+    display: inline-block;
+    font-weight: bold;
+    color: rgb(200, 170, 110);
+    text-transform: uppercase;
+}
+
+.ki-tu-ngan-cach {
+    display: inline-block;
+    height: 13px;
+    width: 1px;
+    background-color: #ccc;
+    margin: 0px 8px;
+}
+
+.date {
+    display: inline-block;
+}
+
+.content-tieu-de {
+    font-family: Spiegel, sans-serif;
+    word-break: break-word;
+    font-size: 22px;
+    line-height: 32px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.category-date {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    float: left;
+    font-family: Spiegel, sans-serif;
+    font-weight: 400;
+    word-break: break-word;
+    font-size: 14px;
+    line-height: 22px;
+    margin: 16px 0px 8px;
+}
+
+.icon-button-action-play-video {
+    background-image: url("https://www.leagueoflegends.com/_next/static/node_modules/@riotgames/blades-ui/dist/skins/common/assets/player-square.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 110px;
+    width: 110px;
+    display: inline-block;
+}
+
+.button-action-play-video {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: clamp(30px, 10%, 100px);
+    height: 100%;
+    background-position: center center;
+}
+
+.icon-action-external-link {
+    background-image: url("https://www.leagueoflegends.com/_next/static/node_modules/@riotgames/blades-ui/dist/skins/common/assets/link-square.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.button-action-external-link {
+    position: absolute;
+    bottom: 39%;
+    right: 0px;
+    height: 100%;
+    width: clamp(30px, 10%, 100px);
+    background-position: center bottom;
+    text-wrap: balance;
+    word-break: break-word;
+    font-family: "Beaufort for LOL", sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.icon {
+    display: inline-block;
+    mask-repeat: no-repeat;
+}
+
+.khoi-thanh-truot-tin-tuc {
+    position: relative;
+    margin-top: 24px;
+    gap: 16px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.duong-ke-thanh-truot {
+    flex: 1 1 0%;
+    align-self: center;
+}
+
+.rail {
+    height: 2px;
+    width: 100%;
+    background-color: #bcbcbc;
+    margin-top: 0px;
+
+}
+
+.indicator {
+    height: 2px;
+    background-color: #050505;
+    transition: width 0.7s ease-out;
+}
+
+button, select {
+    text-transform: none;
+}
+
+button, input {
+    overflow: visible;
+}
+
+button, input, optgroup, select, textarea {
+    font: inherit;
+}
+
+.trigger-wrapper {
+    display: flex;
+    gap: 8px;
+}
+
+.trigger-previous:disabled {
+    cursor: not-allowed;
+}
+
+.interact-button {
+    cursor: pointer;
+    user-select: none;
+}
+
+.user-select-none {
+    user-select: none;
+}
+.trigger-previous:disabled .color-trigger-previous {
+    opacity: 0.7;
+    background-color: #ced0d4;
+}
+
+.trigger-previous .color-trigger {
+    background-color: rgb(200, 170, 110);
+}
+
+.icon-trigger-previous {
+    mask-image: url('./carousel-left.svg');
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    mask-repeat: no-repeat;
+    background-color: rgb(10, 20, 40);
+    mask-size: contain;
+    transform: none;
+}
+
+.trigger-next:disabled {
+    cursor: not-allowed;
+}
+
+.trigger-next .color-trigger {
+    background-color: rgb(200, 170, 110);
+}
+
+.icon-trigger-next {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    mask-image: url('./carousel-right.svg');
+    mask-repeat: no-repeat;
+    background-color: rgb(10, 20, 40);
+    mask-size: contain;
+    transform: none;
+}
+
+.custom-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+/* Desktop */
+@media only screen and (min-width: 1200px) {
+    .vi-tri-cac-khoi-tintuc .card {
+        max-width: calc(33.33% - 32px); 
+        flex: 1 1 calc(33.33% - 32px); 
+        width: auto;
+    }
+}
+
+/* Mobile */
+@media only screen and (max-width: 768px) {
+    .container-tin-tuc .vi-tri-cac-khoi-tintuc .card {
+        max-width: 100%; 
+        flex: 1 1 100%; 
+        width: auto; 
+    }
+    .vi-tri-cac-khoi-tintuc .card:nth-child(n + 2) {
+        display: none;
+    }
+}
+
+/* Tablet */
+@media only screen and (max-width: 1200px) {
+    .vi-tri-cac-khoi-tintuc .card {
+        max-width: calc(50% - 32px);
+        flex: 1 1 calc(50% - 32px);
+        width: auto; 
+    }
+
+    .vi-tri-cac-khoi-tintuc .card:nth-child(n + 3) {
+        display: none;
+    }
+}
+

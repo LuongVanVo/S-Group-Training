@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    background-color: #2F3238;
+    /* margin-top: 50px;
+    margin-left: 50px; */
+    font-family: 'Raleway', Arial, sans-serif;
+    font-weight: 300;
+    box-sizing: border-box;
+    width: 100%;
+    word-spacing: -0.15em;
+}
+
+.picture-1 {
+    position: relative;
+    max-width: 480px;
+    max-height: 360px;
+    min-width: 320px;
+    width: 48%;
+    float: left;
+    cursor: pointer;
+    overflow: hidden;
+    margin: 10px 1%;
+    text-align: left;
+    font-size: 1.25em;
+}
+
+.picture-2 {
+    position: relative;
+    max-width: 480px;
+    max-height: 360px;
+    min-width: 320px;
+    width: 48%;
+    float: left;
+    cursor: pointer;
+    overflow: hidden;
+    margin: 10px 1%;
+    text-align: left;
+    font-size: 1.25em;
+}
+
+
+.image1 {
+    width: 120% !important;
+    height: 100%;
+    float: right;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-bold {
+    font-weight: 800;
+}
+
+.font-size {
+    font-size: 1.3em;
+}
+.margin-0 {
+    margin: 0;
+}
+
+.text-color-white {
+    color: #fff;
+}
+
+.text-2 {
+    width: 100%;
+    height: 100%;
+    font-size: 68.5%;
+    letter-spacing: 1px;
+    opacity: 0;
+    transition: opacity 0.2s ,transform 0.35s;
+}
+
+
+.position-text {
+    width: 100%;
+    position: absolute;
+    top: 200px;
+    z-index: 1;
+    background-color: transparent;
+    padding: 50px;
+}
+
+.picture-1:hover .position-text {
+    position: absolute;
+    transform: translateY(-30px);
+    transition: transform 0.5s ease;
+}
+
+.picture-1:hover .text-2 {
+    opacity: 1; 
+    transform: translateY(-10px);
+}
+
+.picture-1:hover .image1 {
+    transform: translateX(+5%);
+    transition: transform 0.5s ease;
+}
+
+.picture-1:hover .phu-mau {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.image1 {
+    transform: translateX(0);
+    transition: transform 0.5s ease;
+}
+.picture-1 .position-text {
+    transform: translateY(0);
+}
+
+.picture1 .text-2 {
+    transform: translateY(0);
+    opacity: 0;
+}
+
+
+.picture-1 .position-text,
+.picture-1 .text-2
+.picture-1 .image1
+.picture-1 .phu-mau {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.picture-2:hover .phu-mau-2 {
+    opacity: 1;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.picture-2 .phu-mau-2 {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+}
+
+.nen-trong-suot {
+    background-color: transparent;
+}
+ .padding-40 {
+    padding: 40px;
+ }
+
+h2 {
+    font-size: 1.5em;
+}
+
+.phu-mau {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: rgba(48, 133, 163, 0.3); /* Lớp phủ màu đen bán trong suốt */
+    z-index: 0; /* Lớp phủ nằm dưới các phần tử khác */
+}
+
+.phu-mau-2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: rgba(40, 40,40, 0.6);
+    z-index: 0;
+}
+
+.picture-2:hover .text-pic2 {
+    position: absolute;
+    transform: translateY(+45px);
+    transition: transform  0.5s ease;
+}
+
+.text-NOW {
+    font-style: normal;
+    opacity: 0;
+}
+
+
+.picture-2:hover .text-NOW {
+    opacity: 1;
+    transform: translateY(+45px);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.picture-2 .text-NOW, 
+.picture-2 .text-pic2 {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.duong-ke-duoi {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: #fff;
+    transition: transform 0.5 ease;
+    transition: height 0.5s;
+}
+
+.picture-2:hover .duong-ke-duoi {
+    transition: 0.5s ease;
+    height: 10px;
+    transition: height 0.5s;
+}
+
+.position-text-3 {
+    top: 0;
+    margin: 0;
+}
+
+.background-color-white {
+    background-color: #fff;
+}
+
+.list-text-3 {
+    position: absolute;
+    top: 100px;
+}
+
+.display-inline-block {
+    display: inline-block;
+}
+.padding-left-50 {
+    display: inline-block;
+    padding-left: 50px;
+}
+
+.position-text-3 {
+    width: 100%;
+    position: absolute;
+    top: 300px;
+    z-index: 1;
+    background-color: transparent;
+    padding-left: 25px;
+}
+
+.phu-mau-3 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: rgba(223, 78, 78, 0.2);
+    z-index: 0;
+}
+
+.padding-30 {
+    padding: 30px
+}
+
+figure.steve {
+    position: relative; /* Đảm bảo figcaption có thể được đặt tuyệt đối trong figure */
+    max-width: 480px;
+    max-height: 360px;
+    min-width: 320px;
+    width: 48%;
+    margin: 10px 1%;
+    float: left;
+    cursor: pointer;
+    text-align: left;
+    transition: transform 0.35s ease;
+    transform: scale3d(1, 1, 1);
+    overflow: hidden;
+    box-shadow: none;
+    transition: box-shadow 0.35s ease;
+}
+
+figure.steve:hover {
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    transform: scale3d(1.02, 1.02, 1);
+    box-shadow: 0 3px 30px rgba(0, 0, 0, 0.8);
+}
+
+figure.steve {
+    transition: opacity 0.35s ease, transform 0.35s ease, box-shawdow 0.35s ease;
+}
+
+.steve img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+figure.steve figcaption.can-giua {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%;  
+    height: 100%; 
+    background-color: rgba(255, 255, 255, 0.00); 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    z-index: 1;
+}
+
+.font-size-3 {
+    font-size: 1.3em;
+}
+
+.steve h2 {
+    position: absolute;
+    top: 0;
+    /* left: 0; */
+    color: #2d434e;
+    text-align: center;
+    padding: 7.5px;
+    margin-top: 2em;
+    word-spacing: -0.15em;
+    width: 80%;
+    height: 50px;
+    z-index: 2;
+    font-size: 1.5em;
+    font-weight: 400;
+}
+
+.steve h2::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    content: '';
+    -webkit-transition: opacity 0.35s;
+    transition: opacity 0.35s;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+}
+
+.steve p {
+    position: absolute;
+    top: 110px;
+    /* left: 0; */
+    color: #2d434e;
+    margin-top: 1em;
+    padding: 6.85px;
+    font-weight: 800;
+    font-size: 68.5%;
+    word-spacing: 1px;
+    text-align: center;
+    width: 80%;
+    opacity: 0;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    transform: scale3d(0.9, 0.9, 1);
+    z-index: 2;
+}
+
+.steve:hover p {
+    opacity: 1;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    transform: scale3d(1, 1, 1);
+}
+
+.can-giua {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.can-giua-chu {
+    display: flexbox;
+    align-content: center;
+}
