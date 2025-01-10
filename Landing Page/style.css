@@ -1,3 +1,24 @@
+@font-face {
+    font-family: "Spiegel";
+    src: url('./Font/Spiegel-Bold.woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "FF Mark W05";
+    src: url('./Font/Mark\ W05\ Medium.woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Beaufort for LOL";
+    src: url('./Font/beaufort-for-lol/beaufort-for-lol/BeaufortforLOL-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body {
     margin: 0;
@@ -165,6 +186,9 @@ a {
     color: #f9f9f9;
 }
 
+.text-color-c7c7c7 {
+    color: #c7c7c7;
+}
 .text-tieu-de a .dau-mui-ten-cheo svg {
     width: 12px;
     height: 12px;
@@ -218,6 +242,14 @@ a {
     display: block;
 }
 
+.text-tieu-de:hover .dau-mui-ten-xuong {
+    fill: #f9f9f9;
+}
+
+.text-tieu-de:hover .dau-mui-ten-cheo svg path {
+    fill: #f9f9f9;
+}
+
 .list-style-none {
     list-style: none;
 }
@@ -250,6 +282,19 @@ a {
     font-weight: 500;
 }
 
+.li-more {
+    padding: 5px 16px;
+    list-style-type: none;
+}
+
+.display-inline-flex {
+    display: inline-flex;
+}
+
+.list-submenu-news li svg {
+    margin-left: 4px;
+}
+
 .text-hover {
     margin-left: 15px;
     margin-right: 15px;
@@ -259,6 +304,11 @@ a {
     background: rgba(128, 128, 128, .3);
     border-radius: 6.4px;
 }
+
+.text-hover .text-in-submenu-news svg {
+    margin-left: 4px;
+}
+
 .margin-top-16 {
     margin-top: 16px !important;
 }
@@ -370,7 +420,7 @@ a {
     display: flex;
     background-color: #2b2a29;
     transition: background-color 0.1s ease-in-out;
-    border-radius: 1.6rem;
+    border-radius: 1rem;
     padding: 10px 0;
 }
 
@@ -401,16 +451,40 @@ a {
     position: absolute;
     right: 0px;
     transition: opacity 0.75 linear;
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-150%, 0);
+    display: block;
+    cursor: pointer;
+    fill: #f9f9f9;
+}
+
+.search-box svg {
+    width: 22px;
+    height: 22px;
+}
+
+.submit-button {
+    width: 0;
+    border: 0;
+    padding: 0;
+}
+
+.button-cancel {
+    position: absolute;
+    right: 0px;
+    transition: opacity 0.75s linear;
     opacity: 0;
     visibility: hidden;
-    transform: translate(0, -29%);
+    transform: translate(0%, -29%);
     display: block;
     cursor: pointer;
 }
 
-.search-input-container .search-box svg {
+.button-cancel svg {
     width: 60px;
 }
+
 .khoi-chua-video-LMHT {
     min-height: 640px;
     margin: 0px auto;
@@ -432,7 +506,7 @@ a {
 }
 
 .video {
-    opacity: 0.8;
+    opacity: 1;
     background-color: rgb(10, 20, 40);
 }
 
