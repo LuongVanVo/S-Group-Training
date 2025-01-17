@@ -1,0 +1,21 @@
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pokemon-container {
+    display: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pokemon {
+    margin: 10px;
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 0 grey;
+    width: 170px;
+    height: 280px;
+}
