@@ -8,13 +8,37 @@
 </head>
 <body>
     <!-- SECTION 1 -->
-    <div class=" display-flex align-items-center justify-content-center flex-director-column">
-        <div class="heading align-items-center justify-content-center display-flex">
-            <h2>Pokemon API</h2>
+    <div class="container">
+        <div class=" display-flex align-items-center justify-content-center flex-director-column">
+            <div class="heading align-items-center justify-content-center display-flex">
+                <h2>Pokemon API</h2>
+            </div>
+            <div class="search_wrap">
+                <input class="input-text" type="text" placeholder="Seach some Pokemon...">
+            </div>
         </div>
-        <div class="search_wrap">
-            <input class="input-text" type="text" placeholder="Seach some Pokemon...">
+        
+        <div class="wrapper">
+            <!-- <div class="col">
+                <a href="https://pokeapi.co/api/v2/pokemon/1/" class="pokemon">
+                    <div class="id">#1</div>
+                    <div class="image"></div>
+                    <h3 class="title">bulbasaur</h3>
+                    <div class="labels">
+                        <div class="label grass">grass</div>
+                        <div class="label poison">poison</div>
+                    </div>
+                </a>
+            </div> -->
+        </div>
+
+        <div class="wrapper">
+            <div class="col-full">
+                <button class="btn" onclick="loadMorePokemon()">Load More</button>
+            </div>
         </div>
     </div>
+
+    <script src="./main.js"></script>
 </body>
 </html>

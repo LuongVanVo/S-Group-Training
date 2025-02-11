@@ -1,12 +1,18 @@
 body {
-    max-width: 1200px;
-    margin: 50px auto;
-    font-family: Arial, Helvetica, sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
+    color: #2c3e50;
+    background: #ffffff;
+    transition: color .5s, background-color .5s;
+    line-height: 1.6;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 15px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 }
 
+.container {
+    max-width: 1200px;
+    margin: 50px auto;
+}
 .heading {
     font-size: 25px;
     margin-bottom: 50px;
@@ -49,4 +55,198 @@ h2 {
 
 * {
     box-sizing: border-box;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col {
+    --width: 50%;
+    --offset: 10px;
+    max-width: calc(var(--width) - calc(var(--offset)));
+    flex-basis: calc(var(--width) - calc(var(--offset)));
+    margin: 0 calc(var(--offset) / 2);
+    margin-bottom: var(--offset);
+    border-radius: 15px;
+    box-shadow: #0000001a 0 4px 12px;
+    -webkit-transition: all .25s cubic-bezier(.02,.01,.47,1);
+    transition: all .25s cubic-bezier(.02,.01,.47,1);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translateZ(0);
+}
+
+.col:hover {
+    box-shadow: 0 5px 11px #0000002e,0 4px 15px #00000026;
+    transition: box-shadow .4s ease-out
+}
+
+.pokemon {
+    cursor: pointer;
+    display: block;
+    padding: 10px 5px;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    transition: 0.4s;
+}
+
+.id {
+    text-align: center;
+    color: #2c3e50;
+}
+
+.image {
+    padding-top: 100%;
+    background-size: contain;
+}
+
+.title {
+    font-weight: 700;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.labels {
+    display: flex;
+    justify-content: center;
+}
+
+.label {
+    padding: 3px 4px;
+    border-radius: 5px;
+    margin: 0 3px;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: capitalize;
+    box-shadow: #0000000d 0 6px 24px, #00000014 0 0 0 1px;
+}
+
+.normal {
+    background-color: #a8a77a
+}
+
+.fighting {
+    background-color: #c22e28
+}
+
+.flying {
+    background-color: #a98ff3
+}
+
+.poison {
+    background-color: #a33ea1
+}
+
+.ground {
+    background-color: #e2bf65
+}
+
+.rock {
+    background-color: #b6a136
+}
+
+.bug {
+    background-color: #a6b91a
+}
+
+.ghost {
+    background-color: #735797
+}
+
+.steel {
+    background-color: #b7b7ce
+}
+
+.fire {
+    background-color: #ff421c
+}
+
+.water {
+    background-color: #6390f0
+}
+
+.grass {
+    background-color: #78cd54
+}
+
+.electric {
+    background-color: #f7d02c
+}
+
+.psychic {
+    background-color: #f95587
+}
+
+.ice {
+    background-color: #96d9d6
+}
+
+.dragon {
+    background-color: #6f35fc
+}
+
+.dark {
+    background-color: #705746
+}
+
+.fairy {
+    background-color: #d685ad
+}
+
+.unknow {
+    background-color: #68a090
+}
+
+.shadow {
+    background-color: #735797
+}
+
+.col-full {
+    padding-top: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+.btn {
+    cursor: pointer;
+    padding: 20px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ff4d4f;
+    transition: all .25s cubic-bezier(.02,.01,.47,1);
+}
+
+.btn:hover {
+    background-color: #ff7875
+}
+
+.btn:active {
+    background-color: #d9363e
+}
+
+@media (min-width: 768px) {
+    .col {
+        --width: 33.33%;
+        --offset: 10px
+    }
+}
+
+@media (min-width: 960px) {
+    .col {
+        --width: 25%;
+        --offset: 10px
+    }
+}
+
+@media (min-width: 1200px) {
+    .col {
+        --width: 16.66%;
+        --offset: 10px
+    }
 }
