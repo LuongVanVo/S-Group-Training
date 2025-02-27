@@ -1,12 +1,17 @@
 <script setup>
 import { onMounted, ref, watch } from 'vue'
+import { useRouter } from 'vue-router'
+import DetailsPokemon from './DetailsPokemon.vue';
 const apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
-const limit = 36
+const limit = 500
 const offset = ref(0)
 const pokemonList = ref([])
+const allPokemonList = ref([])
 const showLoadMore = ref(true)
 
-const borderRadius = ref(15)
+const checkSearch = ref(false)
+
+const namePokemonSearch = ref('')
 // Hàm để gọi API và lấy danh sách Pokémon
 async function fetchPokemonData() {
     const url = `${apiUrl}?offset=${offset.value}&limit=${limit}`;
@@ -16,6 +21,7 @@ async function fetchPokemonData() {
         const data = await response.json()
         const pokemonListData = data.results
 
+        
         // Lấy chi tiết pokemon và sort theo id của pokemon
         const pokemonData = pokemonListData.map(pokemon => {
             return fetch(pokemon.url)
@@ -23,18 +29,24 @@ async function fetchPokemonData() {
                 .then(pokemonData => {
                     return { pokemon, pokemonData }
                 })
-        })
+            })
 
         const results = await Promise.all(pokemonData)
         results.sort((a, b) => a.pokemonData.id - b.pokemonData.id)
+        
 
-        pokemonList.value = [...pokemonList.value, ...results]
+        allPokemonList.value = [...allPokemonList.value, ...results]
+        if (namePokemonSearch.value.trim() == '') {
+            // pokemonList.value = [...allPokemonList.value]
+            pokemonList.value = allPokemonList.value.slice(0, 36)
+        }
 
         offset.value += limit
 
         if (!data.next) {
             showLoadMore.value = false
         }
+        
     }
     catch (error) {
         console.error("Lỗi trong việc lấy data từ API: ", error);
@@ -43,7 +55,9 @@ async function fetchPokemonData() {
 
 // Hàm để xử lý sự kiện "Load More"
 function loadMorePokemon() {
-  fetchPokemonData()
+    const nextPokemon = allPokemonList.value.slice(pokemonList.value.length, pokemonList.value.length + 36);
+    pokemonList.value = [...pokemonList.value, ...nextPokemon];
+
 }
 
 onMounted(() => {
@@ -51,21 +65,43 @@ onMounted(() => {
 })
 
 function searchPokemon() {
-    const inputText = namePokemonSearch.value.toLowerCase()
-    const filteredPokemon = pokemonList.value.filter(pokemon => {
-        pokemon.name.toLowerCase().includes(inputText)
-    })
-    pokemonList.value = filteredPokemon
-    showLoadMore.value = filteredPokemon.length > 0
+  const inputText = namePokemonSearch.value.toLowerCase().trim();
+  if (inputText == '') {
+    pokemonList.value = [...allPokemonList.value];
+    showLoadMore.value = true;
+  } else {
+    const filteredPokemon = allPokemonList.value.filter(pokemon => 
+        pokemon.pokemon.name.toLowerCase().includes(inputText)
+    )
+    pokemonList.value = filteredPokemon;
+    showLoadMore.value = false;
+    checkSearch.value = filteredPokemon.length === 0;
+  }
 }
 
 watch(namePokemonSearch, searchPokemon)
+
+//router
+const router = useRouter()
+const goToDetail = (pokemonId) => {
+    router.push(`/${pokemonId}`)
+}
+
+// lấy id của pokemon khi click vào pokemon
+const pokemonId = ref(0)
+const getPokemonId = (id) => {
+    pokemonId.value = id
+    console.log(pokemonId.value);
+    
+}
+
 </script>
 
 <template>
+    <!-- <router-view></router-view> -->
   <!-- SECTION 1 -->
   <div class="container">
-        <div class=" display-flex align-items-center justify-content-center flex-director-column">
+        <div class="display-flex align-items-center justify-content-center flex-director-column">
             <div class="heading align-items-center justify-content-center display-flex">
                 <h2>Pokemon API</h2>
             </div>
@@ -75,10 +111,11 @@ watch(namePokemonSearch, searchPokemon)
         </div>
         
         <div class="wrapper">
-            <div v-for="pokemon in pokemonList" :key="pokemon.pokemonData.id" class="col" :style="{ borderRadius: `${borderRadius}px` }">
-                <a href="pokemon.pokemon.url" class="pokemon">
-                    <div class="id">{{ pokemon.pokemonData.id }}</div>
-                    <div class="image" :style="{ backgroundImage: `url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.pokemonData.id}.png)`}"></div>
+            <!-- <h1 v-if="checkSearch">No pokemon matched with "{{ namePokemonSearch }}"</h1> -->
+            <div v-for="pokemon in pokemonList" :key="pokemon.pokemonData.id" class="col" @click="getPokemonId(pokemon.pokemonData.id)">
+                <a @click="goToDetail(pokemon.pokemonData.id)" class="pokemon">
+                    <div class="id">#{{ pokemon.pokemonData.id }}</div>
+                    <div class="image" :style="{ backgroundImage: `url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.pokemonData.id}.png)` }"></div>
                     <h3 class="title">{{ pokemon.pokemonData.name }}</h3>
                     <div class="labels">
                         <div v-for="type in pokemon.pokemonData.types" :key="type.type.name" :class="['label', type.type.name]">{{ type.type.name }}</div>
