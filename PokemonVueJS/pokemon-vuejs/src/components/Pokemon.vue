@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import DetailsPokemon from './DetailsPokemon.vue';
+import { typeColors } from '@/assets/color.js'
 const apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
 const limit = 500
 const offset = ref(0)
@@ -83,16 +83,8 @@ watch(namePokemonSearch, searchPokemon)
 
 //router
 const router = useRouter()
-const goToDetail = (pokemonId) => {
-    router.push(`/${pokemonId}`)
-}
-
-// lấy id của pokemon khi click vào pokemon
-const pokemonId = ref(0)
-const getPokemonId = (id) => {
-    pokemonId.value = id
-    console.log(pokemonId.value);
-    
+const goToDetail = (pokemonId, pokemonName) => {
+    router.push(`/${pokemonId}/${pokemonName}`)
 }
 
 </script>
@@ -112,14 +104,13 @@ const getPokemonId = (id) => {
         
         <div class="wrapper">
             <!-- <h1 v-if="checkSearch">No pokemon matched with "{{ namePokemonSearch }}"</h1> -->
-            <div v-for="pokemon in pokemonList" :key="pokemon.pokemonData.id" class="col" @click="getPokemonId(pokemon.pokemonData.id)">
-                <a @click="goToDetail(pokemon.pokemonData.id)" class="pokemon">
+            <div v-for="pokemon in pokemonList" :key="pokemon.pokemonData.id" class="col">
+                <a @click="goToDetail(pokemon.pokemonData.id, pokemon.pokemonData.name)" class="pokemon">
                     <div class="id">#{{ pokemon.pokemonData.id }}</div>
                     <div class="image" :style="{ backgroundImage: `url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.pokemonData.id}.png)` }"></div>
                     <h3 class="title">{{ pokemon.pokemonData.name }}</h3>
                     <div class="labels">
-                        <div v-for="type in pokemon.pokemonData.types" :key="type.type.name" :class="['label', type.type.name]">{{ type.type.name }}</div>
-                        <!-- <div class="label poison">poison</div> -->
+                        <div v-for="type in pokemon.pokemonData.types" :key="type.type.name" :class="['label']" :style="{ backgroundColor: typeColors[type.type.name]}">{{ type.type.name }}</div>
                     </div>
                 </a>
             </div>
@@ -219,6 +210,7 @@ h2 {
     cursor: pointer;
     display: block;
     padding: 10px 5px;
+    border-radius: 15px;
 }
 
 a {
@@ -256,82 +248,6 @@ a {
     font-weight: 500;
     text-transform: capitalize;
     box-shadow: #0000000d 0 6px 24px, #00000014 0 0 0 1px;
-}
-
-.normal {
-    background-color: #a8a77a
-}
-
-.fighting {
-    background-color: #c22e28
-}
-
-.flying {
-    background-color: #a98ff3
-}
-
-.poison {
-    background-color: #a33ea1
-}
-
-.ground {
-    background-color: #e2bf65
-}
-
-.rock {
-    background-color: #b6a136
-}
-
-.bug {
-    background-color: #a6b91a
-}
-
-.ghost {
-    background-color: #735797
-}
-
-.steel {
-    background-color: #b7b7ce
-}
-
-.fire {
-    background-color: #ff421c
-}
-
-.water {
-    background-color: #6390f0
-}
-
-.grass {
-    background-color: #78cd54
-}
-
-.electric {
-    background-color: #f7d02c
-}
-
-.psychic {
-    background-color: #f95587
-}
-
-.ice {
-    background-color: #96d9d6
-}
-
-.dragon {
-    background-color: #6f35fc
-}
-
-.dark {
-    background-color: #705746
-}
-
-.fairy {
-    background-color: #d685ad
-}
-
-.unknow {
-    background-color: #68a090
 }
 
 .shadow {

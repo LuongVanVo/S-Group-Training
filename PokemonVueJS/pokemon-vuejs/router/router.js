@@ -8,7 +8,7 @@ const routes = [
         component: Pokemon
     },
     {
-        path: '/:pokemonId',
+        path: '/:pokemonId/:pokemonName',
         name: 'DetailsPokemon',
         component: DetailsPokemon,
         props: true

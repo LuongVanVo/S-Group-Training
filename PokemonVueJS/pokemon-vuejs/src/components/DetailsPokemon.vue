@@ -1,7 +1,6 @@
 <script setup>
 import { useRoute } from 'vue-router'
 import { ref, onMounted } from 'vue'
-import { defineProps } from 'vue'
 import { typeColors } from '@/assets/color.js'
 const route = useRoute()
 const pokemonId = route.params.pokemonId
@@ -9,20 +8,23 @@ console.log(pokemonId)
 
 const pokemonDetail = ref({})
 
+const evolutionChainUrl = ref('')
 async function fetchPokemonDetail() {
   const apiUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonId}`;
   try {
     const response = await fetch(apiUrl);
+    
     const data = await response.json();
-
+    
     const primaryType = data.types?.[0]?.type?.name
-
+    
     const speciesUrl = data.species.url
     const speciesResponse = await fetch(speciesUrl)
     const speciesData = await speciesResponse.json()
-
+    console.log("speciesData:", speciesData);
+    
     const flavorTextEntries = speciesData.flavor_text_entries
-
+    
     pokemonDetail.value = {
       id: data.id,
       name: data.name,
@@ -33,6 +35,8 @@ async function fetchPokemonDetail() {
       abilities: data.abilities,
       color: typeColors[primaryType],
       stats: data.stats,
+      evolutionStages: [],
+      evolutionChainUrl: speciesData.evolution_chain.url
     }
     console.log(pokemonDetail.value);
     
@@ -40,10 +44,6 @@ async function fetchPokemonDetail() {
     console.error('Lỗi khi lấy dữ liệu chi tiết Pokémon:', error);
   }
 }
-
-onMounted(() => {
-    fetchPokemonDetail()
-})
 
 const getAbbreviatedStatName = (statName) => {
   const statMapping = {
@@ -57,51 +57,32 @@ const getAbbreviatedStatName = (statName) => {
   return statMapping[statName] || statName.toUpperCase();
 }
 
-// Lấy chuỗi tiến hóa của pokemon
-// async function fetchEvolutionChain() {
-//     const apiUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonDetail.value.id}`
-//     try {
-//         const response = await fetch(apiUrl)
-//         const data = await response.json()
+const evolutionPokemon = ref([]);
 
-//         // lay id cua chuoi tien hoa
-//         const evolutionChainUrl = data.species.url
-//         const speciesResponse = await fetch(evolutionChainUrl)
-//         const speciesData = await speciesResponse.json()
-//         const evolutionChainId = speciesData.evolution_chain.url.split('/')[6]
+const getEvolution = (data) => {
+  console.log("data:", data);
+  
+  evolutionPokemon.value.push({
+    name: data.species.name,
+    imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.species.url.split('/')[6]}.png`
+  });
+  
+  if (data.evolves_to.length > 0) {
+    getEvolution(data.evolves_to[0]);
+  }
+};
 
-//         // lay thong tin cua chuoi tien hoa
-//         const evolutionUrl = `https://pokeapi.co/api/v2/evolution-chain/${evolutionChainId}/`
-//         const evolutionResponse = await fetch(evolutionUrl)
-//         const evolutionData = await evolutionResponse.json()
+onMounted(async () => {
+  await fetchPokemonDetail();
+  
+  const evolutionChain = await fetch(pokemonDetail.value.evolutionChainUrl);
+  const evolutionData = await evolutionChain.json();  
 
-//         // lay thong tin cua pokemon trong chuoi tien hoa
-//         const evolutionChain = evolutionData.chain
-//         const evolutionStages = []
-//         let currentStage = evolutionChain
+  console.log("pokemon detail:", pokemonDetail.value);
 
-//         while(currentStage) {
-//             const stageData = {
-//                 name: currentStage.species.name,
-//                 imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${currentStage.species.name}.png`
-//             }
-//             evolutionStages.push(stageData)
-//             currentStage = currentStage.evolves_to[0] // chuyen sang giai doan tiep theo
-//         }
-//         console.log(evolutionStages)
-//         return evolutionStages
-//     }
-//     catch (error) {
-//         console.error('Lỗi khi lấy dữ liệu chuỗi tiến hóa:', error)
-//     }
-// }
+  getEvolution(evolutionData.chain);
+});
 
-// onMounted(async () => {
-//   if (pokemonDetail.value.id) {
-//     const evolutionData = await fetchEvolutionChain(pokemonDetail)
-//     pokemonDetail.value.evolutionStages = evolutionData
-//   }
-// })
 
 </script>
 
@@ -134,7 +115,9 @@ const getAbbreviatedStatName = (statName) => {
                     </div>
                     <div class="ability">
                         <h3 class="label detail-wrap">Abilities</h3>
-                        <div :class="[ 'detail-wrap', 'detail-tag', item.ability.name]" v-for="item in pokemonDetail.abilities" :key="item.ability.name"> {{ item.ability.name }}</div>
+                        <div class="text-ability">
+                            <div :class="[ 'detail-wrap', 'detail-tag', item.ability.name]" v-for="item in pokemonDetail.abilities" :key="item.ability.name"> {{ item.ability.name }}</div>
+                        </div>
                     </div>
                     <div class="stats">
                         <h3 class="label">Stats</h3>
@@ -146,15 +129,18 @@ const getAbbreviatedStatName = (statName) => {
                         </div>
                     </div>
                     <div class="evolution">
-                        <!-- <h3 class="label">Evolution</h3>
-                        <div class="evolution-wrap" v-for="evolution in fetchEvolutionChain(pokemonDetail.id)" :key="evolution.name">
-                            <div class="evolution">
-                                <div class="form">
-                                    <h4 class="name">{{ evolution.name }}</h4>
-                                    <img :src="evolution.imageUrl" :alt="evolution.name" />
+                        <h3 class="label">Evolution</h3>
+                        <div class="evolution-wrap">
+                            <div v-for="(evolution, index) in evolutionPokemon" :key="evolution.name">
+                                <div class="evolution">
+                                    <div class="form">
+                                        <h4 class="name">{{ evolution.name }}</h4>
+                                        <img :src="evolution.imageUrl" :alt="evolution.name" />
+                                        <div class="divider" v-if="index < evolutionPokemon.length - 1">></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -168,7 +154,6 @@ const getAbbreviatedStatName = (statName) => {
     justify-content: left;
     align-items: flex-start;
     height: 100vh;
-    /* background-color: #f5f5f5; */
     width: 100%;
 }
 
@@ -210,7 +195,6 @@ const getAbbreviatedStatName = (statName) => {
     height: 200px;
     margin: auto;
     background-size: cover;
-    /* background-image: url; */
 }
 .labels {
     display: flex;
@@ -231,12 +215,11 @@ const getAbbreviatedStatName = (statName) => {
 h3 {
     font-weight: 600;
 }
-.grass {
-    background-color: #78cd54;
-}
 
-.poison {
-    background-color: #b97fc9;
+.ability .text-ability {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
 }
 
 .name {
@@ -323,8 +306,16 @@ h3 {
     justify-content: center;
 }
 
-.evolution {
+.form {
+    display: flex;;
+    align-items: center;
+}
+
+.divider {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    margin-right: 20px;
+    font-size: 20px;
 }
 </style>
