@@ -4,12 +4,14 @@
   "description": "",
   "license": "ISC",
   "author": "voluong",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.13.2"
   }
 }
