@@ -10,4 +10,7 @@ routerAPI.get("/", (req, res) => {
 routerAPI.get("/users", userController.getUser)
 routerAPI.post("/users", checkUserExistMiddleware, userController.registerUser)
 routerAPI.post("/login", userController.loginUser)
+
+routerAPI.post("/forgot-password", userController.forgotPassword)
+routerAPI.post("/reset-password", userController.resetPassword)
 export default routerAPI

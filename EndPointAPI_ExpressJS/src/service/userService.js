@@ -2,6 +2,7 @@ import userModel from '../model/user.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
+import nodemailer from 'nodemailer'
 dotenv.config()
 const salt = 10
 // get user
@@ -83,8 +84,96 @@ const loginUserService = async (email, password) => {
         return null
     }
 }
+
+// send email with token, npm mailer
+const transporter = nodemailer.createTransport({
+    service: process.env.EMAIL_SERVICE,
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+})
+
+async function forgotPasswordService(email) {
+    try {
+        const user = await userModel.findOne({ email })
+        if (!user) {
+            return {
+                status: false,
+                message: 'Email or password not valid'
+            }
+        }
+        const payload = { email: user.email }
+        const resetToken = jwt.sign(
+            payload,
+            process.env.JWT_SECRET,
+            { expiresIn: 7 * 60 } // 7 phút
+        )
+        user.passwordResetToken = resetToken
+        user.passwordResetExpires = new Date(Date.now() + 7 * 60 * 1000)
+        await user.save()
+
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: user.email,
+            subject: 'Reset password',
+            html: `<p>Your reset token is:<strong>${resetToken}</strong></p>`
+        }
+        await transporter.sendMail(mailOptions)
+        return {
+            status: true,
+            message: 'Reset password email sent'
+        }
+    } catch (err) {
+        console.log(err)
+        return {
+            status: false,
+            message: 'Error sending reset email'
+        }
+    }
+}
+
+async function resetPasswordService(token, newPassword, email) {
+    try {
+        const user = await userModel.findOne({
+            passwordResetToken: token,
+            email: email,
+        })
+        if (!user) {
+            return {
+                status: false,
+                message: 'Token is invalid or expired'
+            }
+        }
+        const isExpired = user.passwordResetExpires < new Date()
+        if (isExpired) {
+            return {
+                status: false,
+                message: 'Token is expired'
+            }
+        }
+
+        user.password = await bcrypt.hash(newPassword, salt)
+        user.passwordResetToken = undefined
+        user.passwordResetExpires = undefined
+        await user.save()
+        return {
+            status: true,
+            message: 'Password reset successfully'
+        }
+    } catch (err) {
+        console.log(err)
+        return {
+            status: false,
+            message: 'Error resetting password'
+        }
+    }
+}
+    
 export default { 
     getUserService, 
     registerUserService,
-    loginUserService
+    loginUserService,
+    forgotPasswordService,
+    resetPasswordService
 }

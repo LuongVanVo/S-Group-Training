@@ -17,4 +17,16 @@ const loginUser = async (req, res) => {
     return res.status(200).json(data)
 }
 
-export default { getUser, registerUser, loginUser }
+const forgotPassword = async (req, res) => {
+    const { email } = req.body
+    const data = await userService.forgotPasswordService(email)
+    return res.status(200).json(data)
+}
+
+const resetPassword = async (req, res) => {
+    const { token, password, email } = req.body
+    const data = await userService.resetPasswordService(token, password, email)
+    return res.status(200).json(data)
+}
+
+export default { getUser, registerUser, loginUser, forgotPassword, resetPassword }
