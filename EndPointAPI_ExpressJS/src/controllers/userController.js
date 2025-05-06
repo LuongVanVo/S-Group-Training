@@ -29,4 +29,10 @@ const resetPassword = async (req, res) => {
     return res.status(200).json(data)
 }
 
+// get amount user
+const getAmountUser = async (req, res) => {
+    const data = await userService.getAmountUserService()
+    return res.status(200).json(data)
+}
+
 export default { getUser, registerUser, loginUser, forgotPassword, resetPassword }

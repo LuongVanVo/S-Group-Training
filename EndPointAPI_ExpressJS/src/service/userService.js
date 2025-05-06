@@ -97,7 +97,7 @@ const transporter = nodemailer.createTransport({
 async function forgotPasswordService(email) {
     try {
         const user = await userModel.findOne({ email })
-        if (!user) {
+        if (!user) { 
             return {
                 status: false,
                 message: 'Email or password not valid'
@@ -169,11 +169,22 @@ async function resetPasswordService(token, newPassword, email) {
         }
     }
 }
+
+// get amount user
+async function getAmountUserService() {
+    try {
+        return await userModel.countDocuments({})   
+    } catch (err) {
+        console.log(err)
+        return null
+    }
+}
     
 export default { 
     getUserService, 
     registerUserService,
     loginUserService,
     forgotPasswordService,
-    resetPasswordService
+    resetPasswordService,
+    getAmountUserService
 }

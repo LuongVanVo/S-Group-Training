@@ -6,7 +6,8 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     createdAt: { type: String },
     passwordResetToken: { type: String },
-    passwordResetExpires: { type: Date }
+    passwordResetExpires: { type: Date },
+    URL: { type: String },
 })
 
 const userModel = mongoose.model('users', userSchema)
